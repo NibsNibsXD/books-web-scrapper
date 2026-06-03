@@ -1,7 +1,3 @@
-# Aguirre_Jorge_P2.py
-# Ejercicio: Web Scraping y Agrupación de Datos No Supervisado
-# Fuente: https://books.toscrape.com/
-
 import re
 import time
 import requests
@@ -34,7 +30,6 @@ rating_map = {
     "Four": 4,
     "Five": 5
 }
-
 
 def limpiar_precio(texto):
     """
@@ -123,10 +118,7 @@ def hacer_scraping(max_registros=MAX_REGISTROS):
 
     return pd.DataFrame(registros)
 
-
-# =========================
 # PARTE 1: WEB SCRAPING
-# =========================
 
 df = hacer_scraping(MAX_REGISTROS)
 print("\nRegistros extraídos:", len(df))
@@ -135,10 +127,7 @@ print(df.head())
 df.to_csv("dataset_libros_scraping.csv", index=False, encoding="utf-8-sig")
 print("Dataset guardado como dataset_libros_scraping.csv")
 
-
-# =========================
 # PARTE 2: LIMPIEZA Y ANÁLISIS
-# =========================
 
 # Eliminación de duplicados y nulos importantes
 df = df.drop_duplicates(subset=["titulo"])
@@ -156,10 +145,8 @@ df["longitud_titulo"] = df["titulo_limpio"].str.len()
 
 print("\n===== HEAD =====")
 print(df.head())
-
 print("\n===== INFO =====")
 print(df.info())
-
 print("\n===== DESCRIBE =====")
 print(df.describe())
 
@@ -168,9 +155,7 @@ df.to_csv("dataset_libros_limpio.csv", index=False, encoding="utf-8-sig")
 print("Dataset limpio guardado como dataset_libros_limpio.csv")
 
 
-# =========================
 # PARTE 3: APRENDIZAJE NO SUPERVISADO
-# =========================
 
 features_numericas = ["precio", "rating", "stock", "longitud_titulo"]
 features_categoricas = ["categoria_limpia"]
@@ -207,9 +192,7 @@ df.to_csv("dataset_libros_con_clusters.csv", index=False, encoding="utf-8-sig")
 print("Dataset final guardado como dataset_libros_con_clusters.csv")
 
 
-# =========================
 # PARTE 5: VISUALIZACIONES
-# =========================
 
 # Transformar datos para PCA
 X_transformado = kmeans.named_steps["preprocesador"].transform(df[features_numericas + features_categoricas])
@@ -254,10 +237,7 @@ plt.xlabel("Cluster")
 plt.ylabel("Precio")
 plt.show()
 
-
-# =========================
 # PARTE 4: INTERPRETACIÓN
-# =========================
 
 print("\n===== INTERPRETACIÓN BREVE =====")
 print("1. Se formaron 4 grupos usando K-Means.")
