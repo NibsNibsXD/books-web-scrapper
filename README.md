@@ -69,3 +69,7 @@ Este tipo de análisis puede ser útil para segmentar productos, organizar catá
 ## Conclusión
 
 El proyecto cumple con el proceso completo de web scraping, limpieza de datos, análisis exploratorio, aplicación de clustering y visualización de resultados. A partir de datos reales, se logró aplicar aprendizaje no supervisado para encontrar patrones dentro del conjunto de libros extraídos.
+
+##Link para Colab
+
+https://colab.research.google.com/drive/1UpZ2SQm60BoVqJMe-O-Iw-scCk71nE2O#scrollTo=ab0597cf
